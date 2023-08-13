@@ -1,42 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <link rel="shortcut icon" href="./assets/icon/calculator-favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="calc.html">
-   
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<link rel="stylesheet" href="cal.css">
 </head>
 <body>
-   <div class="calculator">
-    <div class="calculator-grid-container">
-        <div class="output-container">
-            <div data-previous-operand class="previous-operand"></div>
-            <div data-current-operand class="current-operand"></div>
-        </div>
-        <button data-all-clear class="ac">AC</button>
-        <button data-delete class="del">Delete</button>
-        <button data-operation class="operation">%</button>
-        <button data-operation class="operation">+</button>
-        <button data-number>1</button>
-        <button data-number>2</button>
-        <button data-number>3</button>
-        <button data-operation class="operation">x</button>
-        <button data-number>4</button>
-        <button data-number>5</button>
-        <button data-number>6</button>
-        <button data-operation class="operation">÷</button>
-        <button data-number>7</button>
-        <button data-number>8</button>
-        <button data-number>9</button>
-        <button data-operation class="operation">-</button>
-        <button data-number>0</button>
-        <button data-number>.</button>
-        <button data-equals class="span-two equals">=</button>
+    <fieldset> <legend>Simple calculator</legend>
+<div class="calculator">
+    <div class="display">
+        <div id="result">type and see your calculations here</div>
     </div>
-   </div>
-   <script src="calc.js"></script>
+    <!-- Buttons for AC, Delete, %, and + -->
+    <div class="row">
+        <div class="button" id="clear">AC</div>
+        <div class="button" id="delete">Delete</div>
+        <div class="button" id="percent">%</div>
+        <div class="button operator" data-operator="+">+</div>
+    </div>
+    <!-- Buttons for digits 1, 2, 3, and multiplication (*) -->
+    <div class="row">
+        <div class="button" data-value="1">1</div>
+        <div class="button" data-value="2">2</div>
+        <div class="button" data-value="3">3</div>
+        <div class="button operator" data-operator="*">x</div>
+    </div>
+    <!-- Buttons for digits 4, 5, 6, and division (/) -->
+    <div class="row">
+        <div class="button" data-value="4">4</div>
+        <div class="button" data-value="5">5</div>
+        <div class="button" data-value="6">6</div>
+        <div class="button operator" data-operator="/">÷</div>
+    </div>
+    <!-- Buttons for digits 7, 8, 9, and subtraction (-) -->
+    <div class="row">
+        <div class="button" data-value="7">7</div>
+        <div class="button" data-value="8">8</div>
+        <div class="button" data-value="9">9</div>
+        <div class="button operator" data-operator="-">-</div>
+    </div>
+    <!-- Buttons for digit 0, decimal point (.), and equals (=) -->
+    <div class="row">
+        <div class="button" data-value="0">0</div>
+        <div class="button" data-value=".">.</div>
+        <div class="button operator" id="equals">=</div>
+    </div>
+</div>
+<script src="cal.js"></script>
+</fieldset>
+<p>designed with <b>Love</b> and <b>courage</b> by Poli.</p>
 </body>
 </html>
