@@ -18,8 +18,8 @@ buttons.forEach(button => {
     } else if (button.id === "percent") {
       calculatePercentage();
     } else if (calculationCompleted && !["clear", "delete", "percent"].includes(button.id)) {
-      // Do not allow input after calculation, except for "AC", "Delete", and "%" buttons
-      return;
+      calculationCompleted = false;
+      currentInput = "";
     }
 
     if (value !== undefined) {
@@ -34,6 +34,8 @@ buttons.forEach(button => {
         } else {
           calculateAndUpdate(operator);
         }
+      } else if (previousInput !== "") {
+        currentOperator = operator; // Allow operator to be changed for existing result
       }
     } else if (button.id === "equals") {
       if (currentOperator !== "") {
@@ -54,17 +56,8 @@ function calculateAndUpdate(newOperator = "") {
   updateDisplay();
 }
 
-function calculatePercentage() {
-  if (previousInput === "") {
-    return;
-  }
-  if (currentInput === "") {
-    currentInput = "100";
-  }
-  previousInput = operate(previousInput, currentInput, "/");
-  currentInput = "100";
-  currentOperator = "";
-  updateDisplay();
+function updateDisplay() {
+  displayResult.textContent = previousInput + (currentOperator ? " " + currentOperator + " " : "") + currentInput || "0";
 }
 
 function clearCalculator() {
@@ -75,8 +68,9 @@ function clearCalculator() {
   updateDisplay();
 }
 
-function updateDisplay() {
-  displayResult.textContent = previousInput + (currentOperator ? " " + currentOperator + " " : "") + currentInput || "0";
+function calculatePercentage() {
+  currentInput = (parseFloat(currentInput) / 100).toString();
+  updateDisplay();
 }
 
 function operate(num1, num2, operator) {
